@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+
+   
     <style>
         /* GALLERY TRANSITIONING */
             /* Add transition effects */
@@ -37,40 +39,39 @@
             opacity: 1;
         }
 
-        /* Responsive design for mobile users */
-
-
-        @media (max-width: 768px) {
-            .gallery-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .gallery img {
-                width: 100%;
-                height: auto;
-            }
-
-            .prev, .next {
-                font-size: 24px;
-                padding: 10px;
-            }
-        }
-
-
+        
+        
         /* FOR MAPS TRANSITIONING */
         .contact-item {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-            }
-
-            .contact-item.appear {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+        
+        .contact-item.appear {
                 opacity: 1;
                 transform: translateY(0);
             }
-
+            
+            /* Responsive design for mobile users */
+            @media (max-width: 768px) {
+                .gallery-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+    
+                .gallery img {
+                    width: 100%;
+                    height: auto;
+                }
+    
+                .prev, .next {
+                    font-size: 24px;
+                    padding: 10px;
+                }
+            }
+            
             /* Responsive design for mobile */
             @media (max-width: 768px) {
                 .contact-item {
@@ -82,6 +83,16 @@
                     height: 300px;
                 }
             }
+            
+                    /* Responsive design for mobile users */
+                    @media (max-width: 768px) {
+                        .service-item {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
 
 
 
@@ -97,16 +108,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Responsive design for mobile users */
-        @media (max-width: 768px) {
-            .service-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                margin-bottom: 20px;
-            }
 
             .service-image img {
                 width: 100%;
@@ -491,7 +492,25 @@
             max-height: 50vh;
             object-fit: cover;
         }
+
+       .nav-link:hover{
+        color:#fff;
+        text-decoration: underline;
+        font-weight: bold;
+       }
+        
+       .contact-us-footer{
+        text-decoration: none;
+       }
+
+       .contact-us-footer:hover{
+        color:#fff;
+        text-decoration: underline;
+        font-weight: bold;
+       }
     </style>
+
+
 </head>
 
 <body>
@@ -500,19 +519,38 @@
             <a class="navbar-brand" href="#">
                 <img src="images/logo.png" alt="FabriTech Industries" style="height: 100px;">
             </a>
+            
+            <!-- Mobile navbar button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+    
+            <!-- navbar content -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" href="#home">Home</a>
-                    <a class="nav-link" href="#services">Services</a>
-                    <a class="nav-link" href="#about">About Us</a>
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                    <a class="nav-link active" href="#home" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a>
+                    <a class="nav-link" href="#services" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Services</a>
+                    <a class="nav-link" href="#about" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">About Us</a>
+                    <a class="nav-link" href="#contact" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contact Us</a>
                 </div>
             </div>
         </div>
     </nav>
+    
+    
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navbarToggler = document.querySelector('.navbar-toggler');
+            var navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            navbarToggler.addEventListener('click', function() {
+                navbarCollapse.classList.toggle('show');
+            });
+        });
+        </script>
+
 
     <main>
         <section id="home" class="py-5" style="background-color: #222222; color: #F5F5F5;">
@@ -538,9 +576,6 @@
         </div>
     </div>
         
-
-
-        <!--This is a comment. Comments are not displayed in the browser-->
 
         <section id="services" class="py-5" style="background-color: #F5F5F5 ;">
             <div class="container">
@@ -636,7 +671,6 @@
             <div class="contact-item">
                 <h3 align="center">Where we are located!</h3>
                 <p class="mb-4">
-                    Find Us Here
                     Our business is conveniently located in Birmingham, serving clients across the region. Whether you need custom steel fabrication, large-scale industrial solutions, or bespoke metalwork, our team is just a short drive or call away. Use the map below to find directions to our facility and plan your visit.
                 </p>
             </div>
@@ -650,17 +684,17 @@
                     scrolling="no"
                     marginheight="0"
                     marginwidth="0"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9341%2C52.5265%2C-1.9141%2C52.5305&amp;layer=mapnik&amp;marker=52.5285%2C-1.9241"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-1.928420%2C52.529667%2C-1.924209%2C52.531134&amp;layer=mapnik&amp;marker=52.5304005%2C-1.9263145"
                     style="border: none;">
                 </iframe>
             </div>
             
             <div class="contact-item text-center">
-                <a href="https://www.openstreetmap.org/?mlat=52.5285&mlon=-1.9241#map=17/52.5285/-1.9241" style="color: #E67E22;">
+                <a href="https://www.openstreetmap.org/?mlat=52.5304005&mlon=-1.9263145#map=18/52.5304005/-1.9263145" target="_blank" style="color: #E67E22;">
                     View Larger Map
                 </a>
             </div>
-        </div>
+            
     </section>
     
     <div class="footer-divider"></div>
@@ -671,18 +705,20 @@
                 <div class="col-md-4 d-flex flex-column align-items-start">
                     <h5 style="color: #E67E22; border-bottom: 2px solid #E67E22; padding-bottom: 5px; margin-bottom: 1rem;">Contact Us</h5>
         
+                    
+
                     <p class="d-flex align-items-center">
                         <span class="material-symbols-outlined me-2" style="color: #E67E22;">
                             mail
                         </span>
-                        <a href="mailto:zenjayfabs@gmail.com" style="color: #F5F5F5; text-decoration: none;">zenjayfabs@gmail.com</a>
+                        <a href="mailto:zenjayfabs@gmail.com" style="color: #F5F5F5;" class="contact-us-footer">zenjayfabs@gmail.com</a>
                     </p>
         
                     <p class="d-flex align-items-center">
                         <span class="material-symbols-outlined me-2" style="color: #E67E22;">
                             call
                         </span>
-                        <a href="tel:0791-5395-394" style="color: #F5F5F5; text-decoration: none;">0791 5395 394</a>
+                        <a href="tel:0791-5395-394" style="color: #F5F5F5;" class="contact-us-footer">0791 5395 394</a>
                     </p>
                 </div>
         
